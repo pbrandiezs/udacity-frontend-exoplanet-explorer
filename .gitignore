@@ -6,4 +6,3 @@ site
 .tmp
 .publish
 TODO
-package-lock.json
