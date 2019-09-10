@@ -74,6 +74,10 @@ Instructions:
     .then(function(response) {
       addSearchHeader(response.query);
       console.log(response);
+      return response;
+    })
+    .then(function(url) {
+      console.log(url.results[0]);
     })
     .catch(function(error) {
       addSearchHeader('unknown');
