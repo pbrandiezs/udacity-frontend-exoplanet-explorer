@@ -69,6 +69,7 @@ Instructions:
     get('../data/earth-like-results.json')
     .then(function(response) {
       addSearchHeader(response);
+      console.log(response);
     })
     .catch(function(error) {
       addSearchHeader('unknown');
