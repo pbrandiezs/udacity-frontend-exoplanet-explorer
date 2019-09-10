@@ -20,6 +20,12 @@ Instructions:
    * @param {String} query - The search query.
    */
   function addSearchHeader(query) {
+    try {
+      response = JSON.parse(response).query;  // you'll be moving this line out of here in the next quiz!
+        //response = getJSON(response);
+      } catch (e) {
+        // it's 'unknown', so leave it alone
+      }
     home.innerHTML = '<h2 class="page-title">query: ' + query + '</h2>';
   }
 
@@ -64,6 +70,14 @@ Instructions:
 
     Your code goes here!
      */
-    // getJSON('../data/earth-like-results.json')
+    getJSON('../data/earth-like-results.json')
+    .then(function(response) {
+      addSearchHeader(response.query);
+      console.log(response);
+    })
+    .catch(function(error) {
+      addSearchHeader('unknown');
+      console.log(error);
+    });
   });
 })(document);
