@@ -72,12 +72,27 @@ Instructions:
      */
     getJSON('../data/earth-like-results.json')
     .then(function(response) {
-      addSearchHeader(response.query);
+      //addSearchHeader(response.query);
       console.log(response);
       return response;
     })
     .then(function(url) {
       console.log(url.results[0]);
+      return url.results[0];
+    })
+    .then(function(planet) {
+      console.log(planet);
+      getJSON('../' + planet)
+      .then(function(planet_data) {
+        //addSearchHeader(planet_data.query);
+        console.log(planet_data);
+        createPlanetThumb(planet_data);
+        return(planet_data);
+      })
+      .catch(function(error) {
+        addSearchHeader('unknown');
+        console.log(error);
+      })
     })
     .catch(function(error) {
       addSearchHeader('unknown');
